@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Android 9+ blocks plain http:// by default. The local backend runs on
+    http://localhost:8085 (USB + adb reverse) or http://<PC-IP>:8085 (Wi-Fi),
+    so cleartext traffic is allowed here for development.
+
+    PRODUCTION: when the API is served over https (e.g. https://api.quicksin.in),
+    change cleartextTrafficPermitted to "false".
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

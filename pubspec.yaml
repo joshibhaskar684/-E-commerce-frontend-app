@@ -1,0 +1,58 @@
+name: quick
+description: "Quick - modern ecommerce app (Flutter client for the Quick microservices backend)"
+publish_to: 'none'
+
+# versionName+versionCode of the Android app
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  dio: ^5.11.1                    # HTTP client (the app's "axios")
+  provider: ^6.1.5+1              # state management (the app's "redux")
+  shared_preferences: ^2.5.5      # small local settings: server URL, wishlist, theme
+  flutter_secure_storage: ^11.2.0 # encrypted storage for the JWT (the website's cookie)
+  cached_network_image: ^4.0.2    # product images with disk cache
+  google_fonts: ^8.2.1            # "Jost" font, same as the website
+  shimmer: ^4.0.0                 # skeleton loaders
+  url_launcher: ^6.3.2            # open payment links / policy pages
+  intl: ^0.20.3                   # ₹ formatting
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4 # dart run flutter_launcher_icons
+  flutter_native_splash: ^2.4.8   # dart run flutter_native_splash:create
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+# ── App icon (generated from assets/icon/*, source: the Quick logo) ─────────
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "#FBBB02"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
+  min_sdk_android: 21
+
+# ── Splash screen shown while the app starts ────────────────────────────────
+flutter_native_splash:
+  color: "#FBBB02"
+  image: assets/icon/splash_logo.png
+  color_dark: "#FBBB02"
+  image_dark: assets/icon/splash_logo.png
+  android_12:
+    color: "#FBBB02"
+    image: assets/icon/splash_android12.png
+    icon_background_color: "#FBBB02"
+  ios: false
+  web: false
