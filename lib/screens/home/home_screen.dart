@@ -5,6 +5,7 @@ import '../../core/theme/app_colors.dart';
 import '../../models/home_data.dart';
 import '../../providers/paged_products.dart';
 import '../../services/product_service.dart';
+import '../../widgets/inline_error.dart';
 import '../../widgets/product_card.dart';
 import '../../widgets/quick_logo.dart';
 import '../../widgets/section_header.dart';
@@ -15,7 +16,6 @@ import '../routes.dart';
 import 'widgets/category_strip.dart';
 import 'widgets/hero_carousel.dart';
 import 'widgets/product_row_section.dart';
-import '../../widgets/inline_error.dart';
 
 /// Home page (website: components/Home/MainHomePage.jsx) —
 /// banners + categories like the website, plus live product sections.
@@ -28,8 +28,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _service = ProductService();
-  late final PagedProducts _all = PagedProducts((page) => _service.getProducts(pageNo: page))..loadMore();
+  late final PagedProducts _all;
   int _reloadToken = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _all = PagedProducts((page) => _service.getProducts(pageNo: page))..loadMore();
+  }
 
   @override
   void dispose() {
